@@ -1,0 +1,36 @@
+package NewFeature;
+
+option java_package = "game.message";
+option java_outer_classname = "NewFeatureMessage";
+
+//功能数据
+message FeatureInfo
+{
+	required string featureId = 1;	   	// 功能ID
+	required int32  featureState = 2;   // 1 == 开启 2 == 未开启 3 == 新功能开放
+	optional string reason = 3;		// 未开启原因 
+}
+
+//******************//
+//  服务器发送消息  //
+//******************//
+
+//服务器发送功能状态
+message ResFeatureInfo
+{
+    enum MsgID { eMsgID = 115101; };
+    repeated FeatureInfo info = 1;
+}
+
+
+//服务器发送功能更新
+message ResUpdateFeature
+{
+    enum MsgID { eMsgID = 115102; };
+    required FeatureInfo info = 1;
+}
+
+
+
+
+

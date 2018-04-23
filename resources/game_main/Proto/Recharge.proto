@@ -1,0 +1,59 @@
+package Recharge;
+
+option java_package = "game.message";
+option java_outer_classname = "RechargeMessage";
+
+// 首充消息结构
+message FirstRecharge
+{
+    required int32 nID = 1;    // 首充档次ID (跟配置表中的ID保持一致)
+	required int32 nState = 2; // 当前档次状态(1 不能领取，2 可以领取 ，3 已经领取)
+}
+
+//******************//
+//  客户端发送消息  //
+//******************//
+
+// 客户端请求验证充值结果
+message ReqRechargeVerify
+{
+    enum MsgID { eMsgID = 126201; };
+	required string strBillNO = 1; // 订单编号
+	required string strAccessToken = 2; // 连接token
+}
+
+// 客户端请求领取首充奖励
+message ReqGetFirstRechargeReward
+{
+    enum MsgID { eMsgID = 126202; };
+	required int32 nID = 1;      // 首充档次ID (跟配置表中的ID保持一致)
+}
+
+//******************//
+//  服务端回复消息  //
+//******************//
+
+// 服务端返回充值验证结果
+message ResVerifyResult
+{
+    enum MsgID { eMsgID = 126101; };
+    optional int32 nError = 1; // 没有值代表成功，其他代表失败
+	required string strBillNO = 2; // 订单编号
+    optional string errorCode = 3; // 平台返回的错误码
+}
+
+// 服务器返回充值信息以及首充奖励信息
+message ResRechargeInfo
+{
+    enum MsgID { eMsgID = 126102; };
+	required int32 nRechargeGold = 1;    // 已经充值的元宝数量
+	repeated FirstRecharge firstRecharge = 2; // 首充档次信息列表
+}
+
+// 服务器返回领取首充奖励结果
+message ResGetFirstRewardResult
+{
+    enum MsgID { eMsgID = 126103; };
+	optional int32 nError = 1; // 错误码( 领取成功则为空，失败则不为空 ) 1 找不到该首充, 2 不是可以领取状态, 3 找不到该首充配置
+	required int32 nID = 2; // 首充档次ID (跟配置表中的ID保持一致)
+}

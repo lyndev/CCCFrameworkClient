@@ -1,0 +1,11 @@
+<PlistInfoProjectFile>
+  <PropertyGroup Name="ui_plist_main_email" Type="Plist" ID="679aad5c-2fa9-4b51-9789-2329572ffc06" Version="3.10.0.0" />
+  <Content ExportType="Png" SortAlgorithm="MaxRects" PicturePadding="2" AllowRotation="True" AllowAnySize="True" AllowTrim="True" ctype="PlistInfoData">
+    <ImageFiles>
+      <FilePathData Path="res_main/ui_res/email/email_not_read.png" />
+      <FilePathData Path="res_main/ui_res/email/email_read.png" />
+      <FilePathData Path="res_main/ui_res/email/email_title.png" />
+    </ImageFiles>
+    <MaxSize Width="1024" Height="1024" />
+  </Content>
+</PlistInfoProjectFile>

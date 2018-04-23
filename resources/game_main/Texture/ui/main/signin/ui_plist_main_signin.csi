@@ -1,0 +1,21 @@
+<PlistInfoProjectFile>
+  <PropertyGroup Name="ui_plist_main_signin" Type="Plist" ID="56f0a8a4-25d1-4aa7-8087-745829ee90aa" Version="3.10.0.0" />
+  <Content ExportType="Png" SortAlgorithm="MaxRects" PicturePadding="2" AllowRotation="True" AllowAnySize="False" AllowTrim="False" ctype="PlistInfoData">
+    <ImageFiles>
+      <FilePathData Path="res_main/ui_res/signin/sgnin_alreadyget.png" />
+      <FilePathData Path="res_main/ui_res/signin/signin_01.png" />
+      <FilePathData Path="res_main/ui_res/signin/signin_02.png" />
+      <FilePathData Path="res_main/ui_res/signin/signin_03.png" />
+      <FilePathData Path="res_main/ui_res/signin/signin_04.png" />
+      <FilePathData Path="res_main/ui_res/signin/signin_05.png" />
+      <FilePathData Path="res_main/ui_res/signin/signin_06.png" />
+      <FilePathData Path="res_main/ui_res/signin/signin_07.png" />
+      <FilePathData Path="res_main/ui_res/signin/signin_08.png" />
+      <FilePathData Path="res_main/ui_res/signin/task_01.png" />
+      <FilePathData Path="res_main/ui_res/signin/task_02.png" />
+      <FilePathData Path="res_main/ui_res/signin/task_03.png" />
+      <FilePathData Path="res_main/ui_res/signin/task_getawrd.png" />
+    </ImageFiles>
+    <MaxSize Width="512" Height="1024" />
+  </Content>
+</PlistInfoProjectFile>

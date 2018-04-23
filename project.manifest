@@ -1,0 +1,11 @@
+{
+    "packageUrl" : "http://192.168.1.41:80/CCCGameClientFramework/remote-assets",
+    "remoteManifestUrl" : "http://192.168.1.41:80/CCCGameClientFramework/remote-assets/project.manifest",
+    "remoteVersionUrl" : "http://192.168.1.41:80/CCCGameClientFramework/remote-assets/version.manifest",
+    "version" : "1.0.0",
+    "engineVersion" : "Cocos2d-x 3.6",
+    "assets" : {
+    },
+    "searchPaths" : [
+    ]
+}

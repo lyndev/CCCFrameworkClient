@@ -1,0 +1,23 @@
+<PlistInfoProjectFile>
+  <PropertyGroup Name="ui_plist_main_frindanplayer" Type="Plist" ID="dcd413a4-6620-45eb-84b2-5a189ac6dc78" Version="3.10.0.0" />
+  <Content ExportType="Png" SortAlgorithm="MaxRects" PicturePadding="2" AllowRotation="True" AllowAnySize="False" AllowTrim="True" ctype="PlistInfoData">
+    <ImageFiles>
+      <FilePathData Path="res_main/ui_res/frindandplayer/firend_on_friend.png" />
+      <FilePathData Path="res_main/ui_res/frindandplayer/firend_on_msg.png" />
+      <FilePathData Path="res_main/ui_res/frindandplayer/frindandplayer_01.png" />
+      <FilePathData Path="res_main/ui_res/frindandplayer/frindandplayer_02.png" />
+      <FilePathData Path="res_main/ui_res/frindandplayer/frindandplayer_03.png" />
+      <FilePathData Path="res_main/ui_res/frindandplayer/frindandplayer_11.png" />
+      <FilePathData Path="res_main/ui_res/frindandplayer/frindandplayer_13.png" />
+      <FilePathData Path="res_main/ui_res/frindandplayer/frindandplayer_17.png" />
+      <FilePathData Path="res_main/ui_res/frindandplayer/frindandplayer_31.png" />
+      <FilePathData Path="res_main/ui_res/frindandplayer/frindandplayer_33.png" />
+      <FilePathData Path="res_main/ui_res/frindandplayer/frindandplayer_35.png" />
+      <FilePathData Path="res_main/ui_res/frindandplayer/frindandplayer_41.png" />
+      <FilePathData Path="res_main/ui_res/frindandplayer/frindandplayer_43.png" />
+      <FilePathData Path="res_main/ui_res/frindandplayer/frindandplayer_44.png" />
+      <FilePathData Path="res_main/ui_res/frindandplayer/frindandplayer_45.png" />
+    </ImageFiles>
+    <MaxSize Width="1024" Height="1024" />
+  </Content>
+</PlistInfoProjectFile>

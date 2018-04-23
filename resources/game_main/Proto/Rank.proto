@@ -1,0 +1,49 @@
+package Rank;
+
+option java_package = "game.message";
+option java_outer_classname = "RankMessage";
+
+// 排名数据结构
+message RankInfo
+{
+	required string   roleName 	  = 1;    		// 角色名
+	required int32    roleHead 	  = 2;			// 角色头像
+	required int32    rank 		  = 3;			// 名次
+	required int32    rankValue   = 4;			// 分数
+	repeated CardInfo cardList    = 5;			// 计算名次时玩家的进攻/防守阵容
+}
+
+// 卡牌数据结构
+message CardInfo
+{
+	required int32 modelId        = 1;			// 模板id
+	required int32 cardLevel      = 2;          // 卡牌等级
+	required int32 qualityLevel   = 3;          // 卡牌品质
+	required int32 starLevel	  = 4;          // 卡牌星级
+}
+
+//******************//
+//  客户端发送消息  //
+//******************//
+
+// 客户端请求指定星级的战场（仙府）排行榜
+message ReqBattlefieldRankList
+{
+    enum MsgID { eMsgID = 122201; };
+    required int32 starLevel = 1;      			// 选择的战场星级（取值范围：2 ~ 10）
+}
+
+//******************//
+//  服务端回复消息  //
+//******************//
+
+// 服务端返回指定星级的战场（仙府）排行榜
+message ResBattlefieldRankList
+{
+    enum MsgID { eMsgID = 122101; };
+	optional int32 error 		 = 1;      		// 错误码，为空则表示操作成功
+	required int32 starLevel 	 = 2;      		// 选择的战场星级
+	repeated RankInfo rankList 	 = 3;			// 排行榜
+	optional RankInfo myRank     = 4;			// 玩家自己的排名信息
+	repeated int32 randomList 	 = 5;			// TOP榜单之外的每日随机奖励名次
+}

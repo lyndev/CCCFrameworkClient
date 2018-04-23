@@ -1,0 +1,199 @@
+package Room;
+
+import "Player.proto";
+
+
+option java_package = "game.message";
+option java_outer_classname = "RoomMessage";
+
+
+message KeyMoveData{
+	optional int32 posX = 1;
+	optional int32 posY = 2;
+	optional uint32 angle = 3;
+	optional string roleId = 4;
+}
+
+message KeyLogicData{
+	optional uint32 skillId = 1;
+	optional uint32 propId = 2;
+	optional string roleId = 3;
+}
+
+message ReqMoveKeyData{
+	enum MsgID { eMsgID = 151210; };
+	optional KeyMoveData moveData = 1;
+	optional string userId = 2;
+}
+
+message ReqLogicKeyData{
+	enum MsgID { eMsgID = 151211; };
+	optional KeyLogicData logicKeyData = 1;
+	optional string userId = 2;
+}
+
+message ResMoveKeyDatas{
+	enum MsgID { eMsgID = 151110; };
+	optional KeyMoveData moveData = 1;
+}
+
+message ResLogicKeyDatas{
+	enum MsgID { eMsgID = 151111; };
+	optional KeyLogicData logicKeyDatas = 1;
+}
+
+message ReqUDPEnterRoom{
+	enum MsgID { eMsgID     = 151212; };
+	optional int32 roomNumber = 1;
+	optional string userId = 2;
+}
+
+message RoomInfo{
+	optional string roomId  = 1;
+	optional int32 roomNum  = 3;
+	optional int32 roomType = 5;
+	optional int32 gameType = 7;
+}
+
+message ReqCreateRoom{
+	enum MsgID { eMsgID     = 150201; };
+	optional int32 roomType = 1;
+	optional int32 gameType = 3; // 1 = 牛牛 2 = 麻将 3 = 斗地主 4 = 扎金花 5 = 坦克
+}
+
+message ReqEnterRoom{
+	enum MsgID { eMsgID     = 150202; };
+	optional int32 roomNumber = 1;
+	optional int32 roomType   = 3;
+	optional bool  bQuick     = 5;
+	optional int32 gameType   = 7;
+}
+
+message ReqLeaveRoom{
+	enum MsgID { eMsgID     = 150203; };
+	optional RoomInfo roomInfo = 1;
+}
+
+message ZJH_AddScore {
+	optional int32 compareState  = 1; // 比牌状态
+	optional int32 addScoreCount = 3; // 加注数目
+	optional int32 currentTimes  = 5; // 当前倍数
+}
+
+message ZJH_CompareCard {
+	optional string comparePlayerId = 3; // 被比牌的玩家id
+	optional int32 compareResult    = 5; // 比牌的结果
+	repeated string cards            = 7; // 发起比牌玩家的牌 1 = 赢， 非1都是输
+	repeated string comparedCards    = 9; // 被比牌玩家的牌
+}
+
+message ZJH_LookCard {
+	repeated string cards    = 3; // 牌
+}
+
+// 根据不同动作定义不同的动作的参数
+// NONE("无类型", 0), 
+// A_READY("准备", 1), 
+// A_UNREADY("取消准备", 2),
+// A_ROBOT("托管", 3),
+// A_UNROBOT("取消托管", 4),
+// A_WAIT("等待", 5),
+// A_UNWAIT("取消等待", 6),
+// A_GIVE_UP("放弃", 10), 
+// A_LOOK_CARD("看牌", 11), 
+// A_OPEN_CARD("开牌", 12), 
+// A_COMPARE_CARD("比牌", 13),
+// A_ADD_SCORE("比牌", 14),
+// A_WAIT_COMPARE("等待比牌", 15),
+// A_THINKING("思考中", 16),
+// A_FOLLOW_SCORE("跟注", 17),
+// A_ONLINE("上线", 100),
+// A_OFFLINE("下线", 101);
+
+message Action{
+	optional int32 actionType                = 1;
+	optional string playerId                 = 3;
+	optional ZJH_AddScore zjh_addScore       = 5;
+	optional ZJH_CompareCard zjh_comparecard = 7;
+	optional ZJH_LookCard zjh_lookcard       = 9;
+}
+
+message ReqAction{
+	enum MsgID { eMsgID = 150204; };
+	optional Action actions = 1;
+}
+
+message ResEnterRoom{
+    enum MsgID { eMsgID = 150101; };
+	optional RoomInfo roomInfo                = 1;
+	optional string playerId                  = 3;
+	optional Player.PlayerInfo playerBaseInfo = 5;
+	optional int32 locationIndex              = 7;
+	optional bool bReady                      = 9;
+	optional int32 gameType                    = 11;
+}
+
+message ResLeaveRoom{
+    enum MsgID { eMsgID = 150102; };
+	optional string playerId                  = 3;
+}
+
+message ResAction{
+	enum MsgID { eMsgID = 150103; };
+	optional Action action = 1;
+}
+
+message ResWillExcuteAction{
+	enum MsgID { eMsgID = 150104; };
+	repeated Action action = 1;
+}
+
+message ZJHDeskData{
+	optional int32 maxScore         = 1; 	// 最大下注
+	optional int32 cellScore        = 2; 	// 单元下注
+	optional int32 currentTimes     = 3; 	// 当前倍数
+	optional int32 maxScoreLimit    = 4; 	// 分数上限
+	optional string bankerPlayerId  = 5; 	// 庄家用户id
+	optional string currentPlayerId = 6;	// 当前玩家 
+}
+
+message FightDeskData{
+	// 根据不同的战斗类型定义不同的战斗桌面数据
+	optional ZJHDeskData zjh_DeskData = 1;
+}
+
+message ZJHPlayerFightData{
+	optional string playerId = 1;
+	optional bool isReady    = 3;
+	repeated string cards    = 6;
+}
+
+message PlayerFightData{
+	// 根据不同的战斗类型定义不同的战斗数据
+	optional ZJHPlayerFightData zjhPlayerFightData = 1;
+	//optional MJPlayerFightData mjPlayerFightData = 1;
+}
+
+message ZJH_GameResult{
+	message PlayerCard{
+		optional string playerId = 1;
+		repeated string cards     = 3;
+		optional int32 getScore  = 5;
+	}
+	optional int32 gameTax         = 1; 	// 游戏税收
+	repeated PlayerCard playerCard = 3;		// 用户扑克
+	optional int32 winnerLocation  = 4; 	// 赢家座位号
+}
+
+message ResFightResult{
+	enum MsgID { eMsgID = 150105; };
+	// 根据不同的战斗类型定义不同的战斗结算数据
+	optional ZJH_GameResult zjh_gameResult = 1;
+}
+
+message ResGameStartFightData{
+	enum MsgID { eMsgID = 150106; };
+	repeated PlayerFightData playerFightData = 1;
+	optional FightDeskData fightDeskData     = 3;
+	optional int32 fightState                = 5;
+}

@@ -1,0 +1,29 @@
+<PlistInfoProjectFile>
+  <PropertyGroup Name="ui_plist_main_createrroom" Type="Plist" ID="416c4d5e-2872-4fd2-8544-4a572746cddd" Version="3.10.0.0" />
+  <Content ExportType="Png" SortAlgorithm="MaxRects" PicturePadding="2" AllowRotation="True" AllowAnySize="False" AllowTrim="False" ctype="PlistInfoData">
+    <ImageFiles>
+      <FilePathData Path="res_main/ui_res/createroom/create_room_08.png" />
+      <FilePathData Path="res_main/ui_res/createroom/create_room_09.png" />
+      <FilePathData Path="res_main/ui_res/createroom/create_room_10.png" />
+      <FilePathData Path="res_main/ui_res/createroom/create_room_11.png" />
+      <FilePathData Path="res_main/ui_res/createroom/create_room_12.png" />
+      <FilePathData Path="res_main/ui_res/createroom/create_room_13.png" />
+      <FilePathData Path="res_main/ui_res/createroom/create_room_14.png" />
+      <FilePathData Path="res_main/ui_res/createroom/create_room_15.png" />
+      <FilePathData Path="res_main/ui_res/createroom/create_room_16.png" />
+      <FilePathData Path="res_main/ui_res/createroom/create_room_17.png" />
+      <FilePathData Path="res_main/ui_res/createroom/create_room_18.png" />
+      <FilePathData Path="res_main/ui_res/createroom/create_room_num_00.png" />
+      <FilePathData Path="res_main/ui_res/createroom/create_room_num_01.png" />
+      <FilePathData Path="res_main/ui_res/createroom/create_room_num_02.png" />
+      <FilePathData Path="res_main/ui_res/createroom/create_room_num_03.png" />
+      <FilePathData Path="res_main/ui_res/createroom/create_room_num_04.png" />
+      <FilePathData Path="res_main/ui_res/createroom/create_room_num_05.png" />
+      <FilePathData Path="res_main/ui_res/createroom/create_room_num_06.png" />
+      <FilePathData Path="res_main/ui_res/createroom/create_room_num_07.png" />
+      <FilePathData Path="res_main/ui_res/createroom/create_room_num_08.png" />
+      <FilePathData Path="res_main/ui_res/createroom/create_room_num_09.png" />
+    </ImageFiles>
+    <MaxSize Width="1024" Height="1024" />
+  </Content>
+</PlistInfoProjectFile>

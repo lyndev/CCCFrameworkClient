@@ -1,0 +1,17 @@
+<PlistInfoProjectFile>
+  <PropertyGroup Name="ui_plist_main_gobreak" Type="Plist" ID="3667ac5e-2606-4ec6-b853-68216f335f47" Version="3.10.0.0" />
+  <Content ExportType="Png" SortAlgorithm="MaxRects" PicturePadding="2" AllowRotation="True" AllowAnySize="False" AllowTrim="True" ctype="PlistInfoData">
+    <ImageFiles>
+      <FilePathData Path="res_main/ui_res/gobreak/gobraek_01.png" />
+      <FilePathData Path="res_main/ui_res/gobreak/gobraek_02.png" />
+      <FilePathData Path="res_main/ui_res/gobreak/gobraek_03.png" />
+      <FilePathData Path="res_main/ui_res/gobreak/gobraek_04.png" />
+      <FilePathData Path="res_main/ui_res/gobreak/gobraek_05.png" />
+      <FilePathData Path="res_main/ui_res/gobreak/gobraek_06.png" />
+      <FilePathData Path="res_main/ui_res/gobreak/gobraek_07.png" />
+      <FilePathData Path="res_main/ui_res/gobreak/gobraek_08.png" />
+      <FilePathData Path="res_main/ui_res/gobreak/gobraek_09.png" />
+    </ImageFiles>
+    <MaxSize Width="1024" Height="1024" />
+  </Content>
+</PlistInfoProjectFile>

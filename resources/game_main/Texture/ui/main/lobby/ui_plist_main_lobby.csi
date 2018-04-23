@@ -1,0 +1,30 @@
+<PlistInfoProjectFile>
+  <PropertyGroup Name="ui_plist_main_lobby" Type="Plist" ID="605c57f4-442b-4ce0-8464-1e7f21d6aac9" Version="3.10.0.0" />
+  <Content ExportType="Png" SortAlgorithm="MaxRects" PicturePadding="2" AllowRotation="True" AllowAnySize="False" AllowTrim="False" ctype="PlistInfoData">
+    <ImageFiles>
+      <FilePathData Path="res_main/ui_res/lobby/lobby_btn_menu_01.png" />
+      <FilePathData Path="res_main/ui_res/lobby/lobby_btn_menu_02.png" />
+      <FilePathData Path="res_main/ui_res/lobby/lobby_btn_menu_03.png" />
+      <FilePathData Path="res_main/ui_res/lobby/lobby_btn_menu_04.png" />
+      <FilePathData Path="res_main/ui_res/lobby/lobby_btn_menu_05.png" />
+      <FilePathData Path="res_main/ui_res/lobby/lobby_btn_menu_06.png" />
+      <FilePathData Path="res_main/ui_res/lobby/lobby_btn_menu_10.png" />
+      <FilePathData Path="res_main/ui_res/lobby/lobby_btn_title.png" />
+      <FilePathData Path="res_main/ui_res/lobby/lobby_btn_title_01.png" />
+      <FilePathData Path="res_main/ui_res/lobby/lobby_btn_title_02.png" />
+      <FilePathData Path="res_main/ui_res/lobby/lobby_btn_title_11.png" />
+      <FilePathData Path="res_main/ui_res/lobby/lobby_btn_title_12.png" />
+      <FilePathData Path="res_main/ui_res/lobby/lobby_coin.png" />
+      <FilePathData Path="res_main/ui_res/lobby/lobby_daer.png" />
+      <FilePathData Path="res_main/ui_res/lobby/lobby_dezhou.png" />
+      <FilePathData Path="res_main/ui_res/lobby/lobby_game_bg.png" />
+      <FilePathData Path="res_main/ui_res/lobby/lobby_gengduo.png" />
+      <FilePathData Path="res_main/ui_res/lobby/lobby_majiang.png" />
+      <FilePathData Path="res_main/ui_res/lobby/lobyy_game_title_daer.png" />
+      <FilePathData Path="res_main/ui_res/lobby/lobyy_game_title_dzpk.png" />
+      <FilePathData Path="res_main/ui_res/lobby/lobyy_game_title_mj.png" />
+      <FilePathData Path="res_main/ui_res/lobby/red_point.png" />
+    </ImageFiles>
+    <MaxSize Width="1024" Height="1024" />
+  </Content>
+</PlistInfoProjectFile>

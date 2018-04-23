@@ -1,0 +1,23 @@
+package Notify;
+
+option java_package = "game.message";
+option java_outer_classname = "NotifyMessage";
+
+//******************//
+//  服务器发送消息  //
+//******************//
+
+// 提示消息
+message ResNotifyPlayer
+{
+	enum MsgID { eMsgID = 118101; }
+	required int32  notifyType 		= 1;	  // 提示类型 0 = error，1 = success， 2 = normal	
+	required string context 		= 2;	  // 提示内容
+}
+
+// 走马灯公告
+message ResNotify
+{
+	enum MsgID { eMsgID = 118102; }
+	required string context	        = 1;      // 公告内容		
+}

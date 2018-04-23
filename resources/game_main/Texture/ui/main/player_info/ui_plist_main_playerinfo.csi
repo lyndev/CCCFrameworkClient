@@ -1,0 +1,13 @@
+<PlistInfoProjectFile>
+  <PropertyGroup Name="ui_plist_main_playerinfo" Type="Plist" ID="43ea62fd-3ee8-4027-8525-7e04deafca50" Version="3.10.0.0" />
+  <Content ExportType="Png" SortAlgorithm="MaxRects" PicturePadding="2" AllowRotation="True" AllowAnySize="False" AllowTrim="False" ctype="PlistInfoData">
+    <ImageFiles>
+      <FilePathData Path="res_main/ui_res/player_info/head_frame.png" />
+      <FilePathData Path="res_main/ui_res/player_info/player_info_jubao.png" />
+      <FilePathData Path="res_main/ui_res/player_info/player_info_kick.png" />
+      <FilePathData Path="res_main/ui_res/player_info/player_info_title.png" />
+      <FilePathData Path="res_main/ui_res/player_info/switch_account.png" />
+    </ImageFiles>
+    <MaxSize Width="512" Height="512" />
+  </Content>
+</PlistInfoProjectFile>

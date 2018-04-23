@@ -1,0 +1,152 @@
+package Chat;
+
+option java_package = "game.message";
+option java_outer_classname = "ChatMessage";
+
+// 公会信息
+message FectionInfo
+{
+    required int32 icon             = 1;    // 公会头像
+    required string name            = 2;    // 公会名称
+    required string id              = 3;    // 公会id
+}
+
+message ArenaInfo
+{
+    repeated ArenaSummary cards     = 1;    // 防守阵容列表
+}
+
+// 发送者信息
+message SenderInfo
+{
+    optional int32 icon             = 1;    // 玩家头像
+    optional int32 level            = 2;    // 玩家等级
+    optional string roleName        = 3;    // 玩家名称
+    optional FectionInfo Fection    = 4;    // 公会信息
+    required string userId          = 5;    // 玩家userId
+    optional int32 vip              = 6;    // 玩家vip等级
+    optional ArenaInfo arenaInfo    = 7;    // 玩家竞技场简要数据
+}
+
+// 文本消息
+message TextMessage
+{
+    required SenderInfo senderInfo  = 1;    // 玩家信息
+    required bytes textMsg          = 2;    // 文本消息
+    required double sendTime        = 3;    // 发送时间(整数部分秒, 小数部分毫秒)
+}
+
+// 语音消息
+message AudioMessage
+{
+    required SenderInfo senderInfo  = 1;    // 玩家信息
+    optional bytes AudioMsg         = 2;    // 语音消息
+    required double sendTime        = 3;    // 发送时间
+    required int32 length           = 4;    // 语音时长
+    required string uuid            = 5;    // uuid
+}
+
+message ArenaSummary
+{
+    required int32 modelId          = 1;    // 模板ID
+	required int32 level            = 2;    // 卡牌等级
+    required int32 quality          = 3;    // 卡牌品质
+}
+
+
+//消息数据信息(两个字段中有且只有填一个)
+message ChatInfoData
+{
+    optional TextMessage  textMsg           = 1; // 文本消息
+	optional AudioMessage audioMessage      = 2; // 语音消息
+    optional string receiverName            = 3; // 接收者roleName
+    optional string receiverUserId          = 4; // 接收者用户Id
+}
+
+// 各个频道的消息列表
+message ChannelInfoData
+{
+    repeated ChatInfoData infoList  = 1;    // 消息列表
+	required int32 channel          = 2;    // 世界1,公会2,私聊3,好友4,系统5
+}
+
+// 发送文本信息
+message ReqSendTextMessage
+{
+    enum MsgID { eMsgID = 131501; };
+    required TextMessage text       = 1;    // 文本消息
+    required int32 channel          = 2;    // 世界1, 公会2, 私聊3
+    optional string userId          = 3;    // 私聊接收者userId
+}
+
+// 发送语音信息
+message ReqSendAudioMessage
+{
+    enum MsgID { eMsgID = 131502; };
+    required AudioMessage audio     = 1;    // 语音消息
+    required int32 channel          = 2;    // 世界1, 公会2, 私聊3
+    optional string userId          = 3;    // 私聊接收者userId
+}
+
+// 请求获取语音信息
+message ReqFetchAudioMessage
+{
+    enum MsgID { eMsgID = 131503; };
+    required string uuid            = 1;    // 语音信息UUID
+}
+
+
+// 服务器消息
+
+// 返回发送文本消息
+message ResSendTextMessage
+{
+    enum MsgID { eMsgID = 131601; };
+    required double sendTime        = 1;    // 客户端的发送时间
+    required double timestamp       = 2;    // 服务器为这条消息指定的时间戳
+	optional bytes textMsg          = 3;    // 文本数据
+}
+
+// 返回发送语音消息
+message ResSendAudioMessage
+{
+    enum MsgID { eMsgID = 131602; };
+    required double sendTime        = 1;    // 客户端的发送时间
+    required double timestamp       = 2;    // 服务器为这条消息指定的时间戳
+}
+
+// 返回获取语音消息
+message ResFetchAudioMessage
+{
+    enum MsgID { eMsgID = 131603; };
+    required string uuid            = 1;    // 语音信息UUID
+    required bytes data             = 2;    // 语音信息内容
+}
+
+message NotifyTextMessage
+{
+    enum MsgID { eMsgID = 131604; };
+    required TextMessage textMessage= 1;    // 通知文本消息
+    required int32 channel          = 2;    // 世界1, 公会2, 私聊3
+}
+
+message NotifyAudioMessage
+{
+    enum MsgID { eMsgID = 131605; };
+    required AudioMessage audioMessage= 1;   // 通知语音消息
+    required int32 channel          = 2;     // 世界1, 公会2, 私聊3
+}
+
+// 初始化聊天记录消息
+message ResInitChatRecordMessag
+{
+    enum MsgID { eMsgID = 131606; };
+	repeated ChannelInfoData infoData = 1; // 消息数据信息
+}
+
+message ResError
+{
+    enum MsgID { eMsgID = 131699; };
+    required int32 errorCode        = 1;    // 错误码
+}
+

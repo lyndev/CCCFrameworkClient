@@ -1,0 +1,30 @@
+{
+  "ver": "1.0.0",
+  "uuid": "ae04be4d-2891-4a4b-b000-94fdb6f94a3f",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "subMetas": {
+    "gobraek_06": {
+      "ver": "1.0.3",
+      "uuid": "d235d0f8-856a-40e5-a310-deea0cd5549f",
+      "rawTextureUuid": "ae04be4d-2891-4a4b-b000-94fdb6f94a3f",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": -1.5,
+      "offsetY": -1,
+      "trimX": 2,
+      "trimY": 2,
+      "width": 130,
+      "height": 35,
+      "rawWidth": 137,
+      "rawHeight": 37,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

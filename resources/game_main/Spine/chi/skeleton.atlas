@@ -1,0 +1,111 @@
+
+skeleton.png
+size: 1024,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+bg
+  rotate: false
+  xy: 154, 75
+  size: 128, 149
+  orig: 128, 149
+  offset: 0, 0
+  index: -1
+chi
+  rotate: false
+  xy: 284, 112
+  size: 121, 112
+  orig: 121, 112
+  offset: 0, 0
+  index: -1
+chi_glow
+  rotate: false
+  xy: 2, 74
+  size: 150, 150
+  orig: 150, 150
+  offset: 0, 0
+  index: -1
+chi_light_00000
+  rotate: false
+  xy: 2, 2
+  size: 80, 70
+  orig: 80, 70
+  offset: 0, 0
+  index: -1
+chi_light_00001
+  rotate: false
+  xy: 407, 154
+  size: 80, 70
+  orig: 80, 70
+  offset: 0, 0
+  index: -1
+chi_light_00002
+  rotate: false
+  xy: 489, 154
+  size: 80, 70
+  orig: 80, 70
+  offset: 0, 0
+  index: -1
+chi_light_00003
+  rotate: false
+  xy: 571, 154
+  size: 80, 70
+  orig: 80, 70
+  offset: 0, 0
+  index: -1
+chi_light_00004
+  rotate: false
+  xy: 653, 154
+  size: 80, 70
+  orig: 80, 70
+  offset: 0, 0
+  index: -1
+chi_light_00005
+  rotate: false
+  xy: 735, 154
+  size: 80, 70
+  orig: 80, 70
+  offset: 0, 0
+  index: -1
+chi_light_00006
+  rotate: false
+  xy: 817, 154
+  size: 80, 70
+  orig: 80, 70
+  offset: 0, 0
+  index: -1
+chi_light_00007
+  rotate: false
+  xy: 899, 154
+  size: 80, 70
+  orig: 80, 70
+  offset: 0, 0
+  index: -1
+chi_light_00008
+  rotate: false
+  xy: 84, 2
+  size: 80, 70
+  orig: 80, 70
+  offset: 0, 0
+  index: -1
+chi_light_00009
+  rotate: false
+  xy: 166, 3
+  size: 80, 70
+  orig: 80, 70
+  offset: 0, 0
+  index: -1
+chi_light_00010
+  rotate: false
+  xy: 407, 82
+  size: 80, 70
+  orig: 80, 70
+  offset: 0, 0
+  index: -1
+chi_light_00011
+  rotate: false
+  xy: 489, 82
+  size: 80, 70
+  orig: 80, 70
+  offset: 0, 0
+  index: -1

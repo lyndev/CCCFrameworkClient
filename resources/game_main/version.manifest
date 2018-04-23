@@ -1,0 +1,7 @@
+{
+    "packageUrl" : "http://106.14.36.155:1573/res/gamecardfixhot/game_main/files/",
+    "remoteManifestUrl" : "http://106.14.36.155:1573/res/gamecardfixhot/game_main/version/project.manifest",
+    "remoteVersionUrl" : "http://106.14.36.155:1573/res/gamecardfixhot/game_main/version/version.manifest",
+	"version":"1.0.0",
+	"engineVersion":"Cocos2d-x 3.6",
+}

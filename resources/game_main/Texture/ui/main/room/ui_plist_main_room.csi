@@ -1,0 +1,46 @@
+<PlistInfoProjectFile>
+  <PropertyGroup Name="ui_plist_main_room" Type="Plist" ID="f08d0440-c4cf-4ea9-8c46-146e0d2ae501" Version="3.10.0.0" />
+  <Content ExportType="Png" SortAlgorithm="MaxRects" PicturePadding="2" AllowRotation="True" AllowAnySize="False" AllowTrim="False" ctype="PlistInfoData">
+    <ImageFiles>
+      <FilePathData Path="res_main/ui_res/room/chuji.png" />
+      <FilePathData Path="res_main/ui_res/room/gaoji.png" />
+      <FilePathData Path="res_main/ui_res/room/room_mj_01.png" />
+      <FilePathData Path="res_main/ui_res/room/room_mj_02.png" />
+      <FilePathData Path="res_main/ui_res/room/room_mj_03.png" />
+      <FilePathData Path="res_main/ui_res/room/room_mj_04.png" />
+      <FilePathData Path="res_main/ui_res/room/room_mj_05.png" />
+      <FilePathData Path="res_main/ui_res/room/room_mj_06.png" />
+      <FilePathData Path="res_main/ui_res/room/room_mj_07.png" />
+      <FilePathData Path="res_main/ui_res/room/room_mj_08.png" />
+      <FilePathData Path="res_main/ui_res/room/room_mj_09.png" />
+      <FilePathData Path="res_main/ui_res/room/room_mj_11.png" />
+      <FilePathData Path="res_main/ui_res/room/room_mj_12.png" />
+      <FilePathData Path="res_main/ui_res/room/room_mj_13.png" />
+      <FilePathData Path="res_main/ui_res/room/room_mj_14.png" />
+      <FilePathData Path="res_main/ui_res/room/room_mj_15.png" />
+      <FilePathData Path="res_main/ui_res/room/room_mj_16.png" />
+      <FilePathData Path="res_main/ui_res/room/shiwan.png" />
+      <FilePathData Path="res_main/ui_res/room/ui_room_01.png" />
+      <FilePathData Path="res_main/ui_res/room/ui_room_02.png" />
+      <FilePathData Path="res_main/ui_res/room/ui_room_03.png" />
+      <FilePathData Path="res_main/ui_res/room/ui_room_04.png" />
+      <FilePathData Path="res_main/ui_res/room/ui_room_05.png" />
+      <FilePathData Path="res_main/ui_res/room/ui_room_06.png" />
+      <FilePathData Path="res_main/ui_res/room/ui_room_07.png" />
+      <FilePathData Path="res_main/ui_res/room/ui_room_08.png" />
+      <FilePathData Path="res_main/ui_res/room/ui_room_09.png" />
+      <FilePathData Path="res_main/ui_res/room/ui_room_10.png" />
+      <FilePathData Path="res_main/ui_res/room/ui_room_11.png" />
+      <FilePathData Path="res_main/ui_res/room/ui_room_12.png" />
+      <FilePathData Path="res_main/ui_res/room/ui_room_13.png" />
+      <FilePathData Path="res_main/ui_res/room/ui_room_14.png" />
+      <FilePathData Path="res_main/ui_res/room/ui_room_15.png" />
+      <FilePathData Path="res_main/ui_res/room/ui_room_16.png" />
+      <FilePathData Path="res_main/ui_res/room/ui_room_17.png" />
+      <FilePathData Path="res_main/ui_res/room/ui_room_18.png" />
+      <FilePathData Path="res_main/ui_res/room/ui_room_19.png" />
+      <FilePathData Path="res_main/ui_res/room/zhongji.png" />
+    </ImageFiles>
+    <MaxSize Width="1024" Height="1024" />
+  </Content>
+</PlistInfoProjectFile>

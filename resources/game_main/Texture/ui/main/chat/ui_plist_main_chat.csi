@@ -1,0 +1,17 @@
+<PlistInfoProjectFile>
+  <PropertyGroup Name="ui_plist_main_chat" Type="Plist" ID="3e9fdd65-01c1-4d75-b4e4-559e7afcad2f" Version="3.10.0.0" />
+  <Content ExportType="Png" SortAlgorithm="MaxRects" PicturePadding="2" AllowRotation="True" AllowAnySize="False" AllowTrim="False" ctype="PlistInfoData">
+    <ImageFiles>
+      <FilePathData Path="res_main/ui_res/chat/chat_bg.png" />
+      <FilePathData Path="res_main/ui_res/chat/chat_bg_l.png" />
+      <FilePathData Path="res_main/ui_res/chat/chat_bg_r.png" />
+      <FilePathData Path="res_main/ui_res/chat/chat_lin.png" />
+      <FilePathData Path="res_main/ui_res/chat/chat_send.png" />
+      <FilePathData Path="res_main/ui_res/chat/face_bg.png" />
+      <FilePathData Path="res_main/ui_res/chat/face_temp.png" />
+      <FilePathData Path="res_main/ui_res/chat/face_temp2.png" />
+      <FilePathData Path="res_main/ui_res/chat/face_temp3.png" />
+    </ImageFiles>
+    <MaxSize Width="1024" Height="1024" />
+  </Content>
+</PlistInfoProjectFile>

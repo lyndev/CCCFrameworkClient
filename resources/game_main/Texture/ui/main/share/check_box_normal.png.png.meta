@@ -1,0 +1,30 @@
+{
+  "ver": "1.0.0",
+  "uuid": "62ab36a3-e4a4-4e5b-8ff5-9a50f22c9e0c",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "subMetas": {
+    "check_box_normal.png": {
+      "ver": "1.0.3",
+      "uuid": "c70c576c-87a8-4be5-95fd-c5b5439dc79e",
+      "rawTextureUuid": "62ab36a3-e4a4-4e5b-8ff5-9a50f22c9e0c",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 52,
+      "height": 46,
+      "rawWidth": 52,
+      "rawHeight": 46,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

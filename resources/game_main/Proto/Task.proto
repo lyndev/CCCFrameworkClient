@@ -1,0 +1,84 @@
+package Task;
+
+option java_package = "game.message";
+option java_outer_classname = "TaskMessage";
+
+///////////////////////////主线任务////////////////////////////////
+message MainTask
+{
+    required int32 taskId       = 1;            //任务ID
+    required int32 progress     = 2;            //进度
+    required int32 taskState    = 3;            //当前任务状态(0=未解锁【服务器使用】，1=进行中, 2=完成但未领取奖励, 3=完成并且已领取奖励)
+}
+
+// 领取奖励
+message ReqGetMainTaskAward
+{
+    enum MsgID { eMsgID = 106201; };
+    required int32 taskId = 1;
+}
+
+// 所有任务信息(加载完成时返回)
+// 更新任务(如果没有则为新增, 如果有则为更新状态<set语义>)
+message ResMainTaskInfo
+{
+    enum MsgID { eMsgID = 106101; };
+    repeated MainTask tasks = 1;
+}
+
+// 领取奖励结果
+message ResGetMainTaskAward
+{
+    enum MsgID { eMsgID = 106102; };
+    required int32 taskId   = 1;
+    required int32 result   = 2; // 领取结果 (0成功, 其他失败 802 找不到该主线任务, 803 不能领取主线任务奖励)
+}
+
+//任务列表更新
+message ResUpdateMainTask
+{
+    enum MsgID { eMsgID = 106103; };
+    repeated MainTask tasks       = 1;    
+}
+
+
+
+
+
+///////////////////////////日常任务////////////////////////////////
+message DailyTask
+{
+    required int32 taskId       = 1;     //任务ID
+    required int32 progress     = 2;     // 当前完成次数(进度)
+    required int32 taskState    = 3;     // 任务状态(0=未开启[服务器使用]，1=进行中, 2=完成但未领取奖励, 3=完成并且已领取奖励)
+}
+
+// 领取一个日常任务奖励
+message ReqGetOneDailyTaskAward
+{
+    enum MsgID { eMsgID = 106211; };
+    required int32 taskId = 1;
+}
+
+// 所有日常任务信息(加载完成时返回)
+// 更新任务(如果没有则为新增, 如果有则为更新状态<set语义>)
+message ResDailyTaskInfo
+{
+    enum MsgID { eMsgID = 106111; };
+    repeated DailyTask tasks = 1;                   // 日常任务
+}
+
+//领取日常任务结果
+message ResGetOneDailyTaskAward
+{
+    enum MsgID { eMsgID = 106112; };
+    required int32 taskId = 1;
+    required int32 result = 2; // 领取结果 (0成功, 其他失败 800 找不到该日常任务, 801 不能领取日常任务奖励)
+}
+
+// 更新任务(如果没有则为新增, 如果有则为更新状态<set语义>)
+message ResUpdateDailyTask
+{
+    enum MsgID { eMsgID = 106113; };
+    repeated DailyTask tasks = 1;                   // 日常任务
+}

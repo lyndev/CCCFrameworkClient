@@ -1,0 +1,48 @@
+package Vip;
+
+option java_package = "game.message";
+option java_outer_classname = "VipMessage";
+
+message VipRewards
+{
+    required int32 vipLevel = 1;
+    required int32 status = 2; // 1 未领取, 2已领取
+}
+
+//******************//
+//    客户端消息    //
+//******************//
+
+// 领取奖励
+message ReqGetRewards
+{
+    enum MsgID { eMsgID = 128202; };
+    required int32 vipLevel = 1; // 领取vip：X的奖励
+}
+
+
+//******************//
+//    服务端消息    //
+//******************//
+
+// Vip等级变化消息
+message ResVipLevel
+{
+    enum MsgID { eMsgID = 128100; };
+    required int32 vipLevel = 1;
+}
+
+// Vip奖励状态
+message ResVipRewardsInfo
+{
+    enum MsgID { eMsgID = 128101; };
+    repeated VipRewards awards = 1;
+}
+
+//请求领奖结果
+message ResGetRewards
+{
+    enum MsgID { eMsgID = 128102; };
+    required int32 vipLevel     = 1; // 请求领取相应的奖品，等级
+    required int32 eCode        = 2; // 错误码
+}

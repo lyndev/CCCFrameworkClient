@@ -1,0 +1,180 @@
+package Backpack;
+
+option java_package = "game.message";
+option java_outer_classname = "BackpackMessage";
+
+//物品消息结构
+message Item
+{
+    required int32 id = 1;		            // 物品Id
+    required int32 num = 2;                	// 物品数量
+	required int32 type = 3;				// 物品类型 1-礼包 2-宝箱 3-钥匙 4-经验药水 5-英雄魂石 6-装备 7-装备
+//	optional int32 qualityExp = 4; 			// 如果是装备，可能包含装备精炼经验
+//  optional int32 equipLevel = 5; 			// 如果是装备，可能包含装备强化等级
+}
+
+//背包格子消息结构
+message Grid
+{
+    required int32 id = 1;             		// 格子ID
+	optional Item item = 2;					// 格子中存放的物品
+}
+
+//资源消息结构
+message Resource
+{
+    required int32 type = 1;             	// 资源类型：1=金币，2=元宝，3=体力，4=成就点，5=木材，6=星魂，7=星钻，8=代币1，9=代币2
+	required int32 num = 2;					// 资源当前数量
+	optional ResourceProducer producer = 3; // 可恢复资源的产出信息
+}
+
+// 资源恢复结构
+message ResourceProducer
+{
+	required int32 interval = 1; // 每次生产的间隔时间（单位：秒）
+	required int32 addValue = 2; // 每次生产的产出值
+	required int32 limit = 3; // 自动产出的上限值
+	required string lastTime = 4; // 最近一次产出时间，0表示上次计算时已达产出上限（暂停产出）
+}
+
+//******************//
+//  客户端发送消息  //
+//******************//
+
+//客户端请求背包数据
+message ReqBackpackList
+{
+    enum MsgID { eMsgID = 104201; };
+}
+
+//客户端请求使用物品
+message ReqItemUse
+{
+    enum MsgID { eMsgID = 104202; };
+    required int32 gridId = 1;      		// 待使用的物品所存的格子ID
+    required int32 num = 2;         		// 使用的物品数量
+	optional string cardInstId = 3;			// 如果是对卡牌使用，则设置卡牌的实例ID
+}
+
+//客户端请求出售物品
+message ReqItemSell
+{
+    enum MsgID { eMsgID = 104203;};
+	required int32 gridId = 1;      		// 待出售的物品所存的格子ID
+    required int32 num = 2;         		// 出售的物品数量
+}
+
+//客户端请求分解物品
+message ReqItemCell
+{
+    enum MsgID { eMsgID = 104204;};
+	required int32 gridId = 1;      		// 待分解的物品所存的格子ID
+    required int32 num = 2;         		// 分解的物品数量
+}
+
+//客户端请求合成物品
+message ReqItemCombine
+{
+    enum MsgID { eMsgID = 104205;};
+	required int32 gridId = 1;      		// 待合成的物品所存的格子ID
+    required int32 num = 2;         		// 合成的物品数量
+}
+
+//客户端请求使用经验道具
+message ReqExpPropUse
+{
+    enum MsgID { eMsgID = 104206; };
+    required string cardInstId = 1;			// 卡牌实例ID
+	repeated Item items = 2;      			// 使用的物品列表
+}
+
+//客户端请求融合碎片
+message ReqDebrisCombine
+{
+    enum MsgID { eMsgID = 104207;};
+	required int32 itemId = 1;      		// 要融合的物品ID
+    required int32 num = 2;         		// 融合的物品数量
+}
+
+//测试方法：客户端添加所有道具消息
+message ReqTestAddAllItem
+{
+    enum MsgID { eMsgID = 104208;}
+}
+
+//******************//
+//  服务端回复消息  //
+//******************//
+
+//服务端返回背包数据
+message ResBackpackList
+{
+    enum MsgID { eMsgID = 104101; };
+    repeated Grid grids = 1;        		// 背包格子列表
+}
+
+//服务端返回物品使用结果
+message ResItemUse
+{
+    enum MsgID { eMsgID = 104102; };
+    optional int32 error = 1;       		// 错误码，为空则表示操作成功
+	optional int32 itemId = 2;				// 成功后返回物品ID
+}
+
+//服务器返回物品出售结果
+message ResItemSell
+{
+    enum MsgID { eMsgID = 104103; };
+    optional int32 error = 1;       		// 错误码，为空则表示操作成功
+	optional int32 gold = 2;				// 出售后获得的金币（客户端显示用）
+}
+
+//服务器返回物品分解结果
+message ResItemCell
+{
+    enum MsgID { eMsgID = 104104; };
+    optional int32 error = 1;       		// 错误码，为空则表示操作成功
+	required int32 num = 2;					// 一次性分解的物品数量
+	repeated Item items = 3;        		// 分解后获得的物品列表
+}
+
+//服务器返回物品合成结果
+message ResItemCombine
+{
+    enum MsgID { eMsgID = 104105; };
+    optional int32 error = 1;       		// 错误码，为空则表示操作成功
+	required int32 num = 2;					// 一次性合成的物品数量
+	optional Item item = 3;	        		// 合成后获得的物品信息，合成有一定几率，故有可能没有error，但item为空，则表示程序没有异常，但合成失败！
+	optional int32 type = 4;				// 合成类型（兼容以前的代码，故设置为可空）：1 = 图纸合成，2 = 碎片融合；3 = 一般合成
+}
+
+//服务器返回经验道具的使用结果
+message ResExpPropUse
+{
+    enum MsgID { eMsgID = 104106; };
+    optional int32 error = 1;       		// 错误码，为空则表示操作成功
+}
+
+//服务端回复背包变化
+message ResBackpackUpdate
+{
+    enum MsgID { eMsgID = 104108; };
+    repeated Grid grids = 1;        		// 变更的背包格子列表，任一Grid的item如果为空，则表示客户端应该将此格子从背包中移除！
+}
+
+//服务端回复资源变化
+message ResResourceUpdate
+{
+    enum MsgID { eMsgID = 104109; };
+    repeated Resource resources = 1;       // 变更的资源列表，客户端拿到后更新对应资源的值（如果包含producer，还需要同步产出状态）
+}
+
+//服务端回复开宝箱的结果（开宝箱的消息和使用一般物品一样：ReqItemUse，这个消息是单独返回，用于客户端播放开箱动画）
+message ResOpenBox
+{
+    enum MsgID { eMsgID = 104110; };
+    required int32 boxId = 1;       	   // 打开的宝箱ID（也是物品ID）
+	optional int32 boxType = 2;			   // 打开的宝箱类型：1 = 普通宝箱，2 = 精致宝箱，3 = 豪华宝箱（暂时没用）
+	required int32 boxNum = 3;			   // 打开的宝箱数量
+	repeated Item items = 4;			   // 开出的物品列表
+}

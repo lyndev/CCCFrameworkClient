@@ -1,0 +1,63 @@
+package Mail;
+
+import"Backpack.proto";
+
+option java_package = "game.message";
+option java_outer_classname = "MailMessage";
+
+message Mail
+{
+    required string id                      = 1; //邮件ID
+    required string title                   = 2; //邮件标题
+    required string content                 = 3; //邮件内容
+    required int32 type                     = 4; //邮件类型
+    required string senderName              = 5; //发送者roleName
+    required string receiverId              = 6; //接受者roleId
+    required string receiverName            = 7; //接受者roleName
+    required int32 accessory                = 8; //是否包含附件 0未包含1包含
+    required int32 read                     = 9; //是否已读 0未读1已读
+    required int32 sendTime                 = 10; //发送时间
+    required int32 deadLine                 = 11; //到期时间
+    
+    repeated Backpack.Resource resources    = 12; //附件资源列表
+    repeated Backpack.Item items            = 13; //附件物品列表
+}
+
+/////////////////客户端消息
+
+message ReqMailList //请求邮件列表
+{
+    enum MsgID { eMsgID = 113201; };
+}
+
+message ReqGetAccessory //获取附件资源和物品
+{
+    enum MsgID { eMsgID = 113202; };
+    required string id                      = 1; //邮件ID
+}
+
+message ReqMailRead //通知服务器指定邮件已读
+{
+    enum MsgID { eMsgID = 113203; };
+    required string id                      = 1; //邮件ID
+}
+
+message ReqMailDelete //请求删除邮件
+{
+    enum MsgID { eMsgID = 113204; };
+    required string id                      = 1; //邮件ID
+}
+
+//////////////////////服务端消息
+
+message ResMailList //发送邮件列表, 初始化时/有新邮件时 通知客户端
+{
+    enum MsgID { eMsgID = 113101; };
+    repeated Mail mails                     = 1; //邮件列表
+}
+
+message ResMailDelete //确认删除邮件
+{
+    enum MsgID { eMsgID = 113102; };
+    required string id                      = 1; //邮件ID
+}

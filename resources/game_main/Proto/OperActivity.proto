@@ -1,0 +1,74 @@
+package OperActivity;
+
+option java_package = "game.message";
+option java_outer_classname = "OperActivityMessage";
+
+
+// 奖励信息
+message RewardInfo
+{
+	required int32 activityId		= 1;	//活动Id
+	required int32 status 			= 2; 	//活动状态(1.可以领取，2.已经领取)
+}
+
+
+//充值奖励信息
+message RechargeInfo
+{
+	required int32 	rechargeTotal 	= 1; //活动期间累计充值额
+	repeated RewardInfo info 		= 2; //奖励信息	
+}
+
+//登陆奖励信息s
+message LoginRewardInfo
+{
+	required int32 loginTms 	= 1; //活动期间总登陆次数
+	repeated RewardInfo info 	= 2; //奖励信息	
+}
+
+
+//******************//
+//  客户端发送消息  //
+//******************//
+
+// 请求领取奖励
+message ReqReward
+{
+	enum MsgID { eMsgID = 139201; };
+	required int32  activityId        = 1;     //活动Id
+}
+
+
+//******************************//
+//  服务器发送到客户端消息  	//
+//******************************//
+
+//初始化消息
+message ResActivityInfo
+{
+	enum MsgID { eMsgID = 139101; };
+	optional RechargeInfo rechargeInfo = 1;		//充值奖励信息
+	optional LoginRewardInfo loginInfo = 2; 	//登陆奖励信息
+}
+
+//领取奖励结果
+message ResReward
+{
+	enum MsgID { eMsgID = 139102; };
+	required int32 eCode = 1;			//错误码
+}
+
+//有新活动开启
+message ResNewActivity
+{
+	enum MsgID { eMsgID = 139103; };
+	required string contextJson = 1;	//活动内容 
+}
+
+//有奖励可以领取
+message ResHaveRewardCanGet
+{
+	enum MsgID { eMsgID = 139104; };
+	required int32 mainType = 1; 	//活动主类型
+	required int32 subType = 2; 	//活动子类型
+}

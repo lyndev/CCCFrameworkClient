@@ -1,0 +1,30 @@
+{
+  "ver": "1.0.0",
+  "uuid": "74741b08-208e-45bf-9818-753572dd418c",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "subMetas": {
+    "lobyy_game_title_mj": {
+      "ver": "1.0.3",
+      "uuid": "5677ee6e-45ac-460c-be07-6611e66425e1",
+      "rawTextureUuid": "74741b08-208e-45bf-9818-753572dd418c",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 123,
+      "height": 30,
+      "rawWidth": 123,
+      "rawHeight": 30,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

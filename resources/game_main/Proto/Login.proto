@@ -1,0 +1,111 @@
+package Login;
+
+import "Player.proto";
+
+option java_package = "game.message";
+option java_outer_classname = "LoginMessage";
+
+// 客户端请求登录消息
+message ReqLogin
+{
+    enum MsgID { eMsgID = 100201; };
+    optional int32 plaformId     = 1;       // 平台ID(微信= 1)
+    optional string  clientFlag  = 2;       // 客户端系统id
+    optional int32  time         = 8;       // 登录时间
+    optional string clientVer    = 9;       // 客户端版本
+    optional string soleId       = 10;      // 唯一id,如果为空服务器就会去创建游客用户(微信用open_id)
+    optional string roleName     = 14;      // 角色名字
+    optional int32 sex           = 15;      // 性别
+    optional string headURL      = 16;      // 头像地址
+    optional string userName     = 17;
+    optional int32 serverId        = 18;  
+}
+
+// 客户端请求创建角色
+message ReqCreateRole
+{
+    enum MsgID {eMsgID = 100202; };
+    optional string roleName    = 1;        // 角色名
+    optional string soleId      = 4;        // 唯一id,如果为空服务器就会去创建游客用户(微信用open_id)
+    optional int32 sex          = 7;        // 性别
+    optional string headURL     = 8;        // 头像地址
+    optional string userName    = 9;
+    optional int32  serverId      = 10;
+}
+
+// 创建角色失败
+message ResCreateRoleFailed
+{
+    enum MsgID {eMsgID = 100104; }
+    required int32 reason = 1;      // 原因:
+                                    //      1 = 角色名已存在
+                                    //      2 = 角色名为空
+                                    //      3 = 角色名中有空格
+                                    //      4 = 队伍名字超出12个字符
+                                    //      5 = 帐号名或角色名是敏感词
+                                    //      6 = 没有激活码或错误的激活码
+                                    //      7 = 角色名中包含特殊字符 ！!@#$%^&*()_+-=
+                                    //      8 = 登录超时
+}
+
+// 服务端回复登录失败
+message ResLoginFailed
+{
+    enum MsgID { eMsgID = 100101; };
+    required int32 reason = 1;      // 原因(1 = 账号验证未通过, 2 = 没有角色, 3 = 需要激活码, 4 = 客户端版本不对)
+}
+
+// 服务端回复登录成功
+message ResLoginSuccess
+{
+    enum MsgID { eMsgID = 100102; };
+    optional Player.PlayerInfo playerInfo = 1;          // 角色信息
+    optional string token = 2;                          // 客户端重连令牌
+}
+
+// 客户端请求重连消息
+message ReqReconnect
+{
+    enum MsgID { eMsgID = 100203; };
+    required string userId = 1;     // 用户ID
+    required string token = 2;      // 客户端重连令牌
+    optional string clientVer = 3;  // 客户端版本
+}
+
+// 服务端回复重连失败
+message ResReconnetFialed
+{
+    enum MsgID { eMsgID = 100103; };
+    required int32 reason = 1;      // 失败原因(1 = 会话已过期；2 = 令牌不正确；3 = 未断开连接; 4 = 客户端版本不对)
+}
+
+// 服务端回复重连成功
+message ResReconnetSuccess
+{
+    enum MsgID { eMsgID = 100104; };
+    required string token = 1;      // 客户端重连令牌，令牌如果过期服务端会自动刷新，故客户端拿到后需对比更新令牌
+}
+
+// 服务端回复玩家没有登录（或者会话过期）
+message ResNotLogin
+{
+    enum MsgID { eMsgID = 100105; };
+}
+
+message ResCloseSocket
+{
+    enum MsgID { eMsgID = 100106; };
+    required int32 reason = 1;      // 1 = 被顶号；2 = 帐号异常，请重新登录；3 = 服务器重启
+}
+
+message ResPingPong
+{
+    enum MsgID { eMsgID = 100198; };
+    optional int64 value = 1;
+}
+
+message ResAck
+{
+    enum MsgID { eMsgID = 100199; };
+    optional int32 time = 1;
+}

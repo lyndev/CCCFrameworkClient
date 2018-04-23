@@ -1,0 +1,66 @@
+package Rebate;
+
+import"Backpack.proto";
+
+option java_package = "game.message";
+option java_outer_classname = "RebateMessage";
+
+//******************//
+//  客户端发送消息  //
+//******************//
+
+message RebateReward
+{
+    required int32 id                           = 1;  //奖励id
+    required bool alreadyGet                    = 2;  //是否已领取
+}
+
+message Rebate
+{
+    required int32 id                           = 1;  //活动id
+    required int32 amount                       = 2;  //当前已充值/消费的值
+    repeated RebateReward rewards               = 3;  //该活动包含的奖励项
+    required int32 type                         = 4;  //活动类型
+    required string startTime                   = 5;  //开始时间
+    required string endTime                     = 6;  //终止时间
+}
+
+//客户端请求领取奖励
+message ReqGetReward
+{
+    enum MsgID { eMsgID = 129201; };
+    required int32 rebateId                     = 1; //活动id
+    required int32 rebateRewardId               = 2; //可领取的奖励项id
+    
+}
+
+//请求全部活动信息
+message ReqRebateInfo
+{
+    enum MsgID { eMsgID = 129202; };
+}
+
+//******************//
+//  服务端发送消息  //
+//******************//
+
+//全部活动信息
+message ResRebateInfo
+{
+    enum MsgID { eMsgID = 129101; };
+    repeated Rebate rebates                     = 1; //活动列表
+}
+
+//错误码消息
+message ResError
+{
+    enum MsgID { eMsgID = 129102; };
+    required int32 code                         = 1; //错误码
+}
+
+message ResGetReward
+{
+    enum MsgID { eMsgID = 129103; };
+    required int32 rebateId                     = 1; //活动id
+    required int32 rebateRewardId               = 2; //可领取的奖励项id
+}

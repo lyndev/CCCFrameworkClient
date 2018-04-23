@@ -1,0 +1,108 @@
+package Friend;
+
+option java_package = "game.message";
+option java_outer_classname = "FriendMessage";
+
+
+// 好友信息
+message Friend
+{
+    required string     userId          = 1;    // 玩家Id
+    required string     roleName        = 2;    // 玩家昵称
+    required int32      roleLevel       = 3;    // 角色等级
+    required int32      roleHead        = 4;    // 头像
+    required int32      isOnline        = 5;    // 是否在线(0 否, 1 是)
+    optional int32      type            = 6;    // 好友类型（1:正式好友，0:临时好友)
+    optional int32      addFriendTime   = 7;    // 添加好友时间戳(秒), 该字段只有在好友列表返回中存在
+    optional string     tongName        = 8;    // 公会名字
+}
+
+////////////////
+//客户端
+////////////////
+
+// 获取所有好友信息
+message ReqAllFriendInfo
+{
+    enum MsgID { eMsgID = 130501; };
+}
+
+// 申请好友
+message ReqApplyFriend
+{
+    enum MsgID { eMsgID = 130502; };
+    required string userId = 1;
+    required int32 type = 2;  // 1 = 正式好友, 0 = 临时好友
+}
+
+// 删除好友
+message ReqRemoveFriend
+{
+    enum MsgID { eMsgID = 130503; };
+    required string userId = 1;
+}
+
+// 搜索好友
+message ReqSearchFriend
+{
+    enum MsgID { eMsgID = 130504; };
+    required string searchString = 1;
+}
+
+////////////////
+//服务端
+////////////////
+
+// 服务器返回所有好友信息
+message ResAllFriendInfo
+{
+    enum MsgID { eMsgID = 130601; };
+    repeated Friend friends         = 1;    //好友列表
+    required int32  errorCode       = 2;    //错误码 
+}
+
+// 服务器返回添加好友结果
+message ResApplyFriend
+{
+    enum MsgID { eMsgID = 130602; };
+    required string     userId      = 1; //好友Id
+    required Friend     friends     = 2; // 好友信息
+    required int32      errorCode   = 3; //错误码
+}
+
+// 服务器返回删除好友结果
+message ResRemoveFriend
+{
+    enum MsgID { eMsgID = 130603; };
+    required string     userId      = 1; // 要删除的好友Id
+    required int32      errorCode   = 2; // 错误码
+}
+
+// 服务器返回搜索到的玩家
+message ResSearchFriend
+{
+    enum MsgID { eMsgID = 130604; };
+    repeated Friend     friends     = 1; // 搜索到的好友列表
+    required int32      errorCode   = 2; // 错误码   
+}
+
+// 添加临时好友通知
+message NotityAddTmpFrined
+{
+    enum MsgID { eMsgID = 130605; };
+    required Friend friends = 1; // 好友信息
+}
+
+// 好友上线通知
+message NotifyFriendOnline
+{
+    enum MsgID { eMsgID = 130606; };
+    required string userId = 1; // 好友Id
+}
+
+// 好友下线通知
+message NotifyFriendOffline
+{
+    enum MsgID { eMsgID = 130607; };
+    required string userId = 1; // 好友Id
+}

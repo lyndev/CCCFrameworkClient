@@ -1,0 +1,18 @@
+<PlistInfoProjectFile>
+  <PropertyGroup Name="ui_plist_main_setting" Type="Plist" ID="fe27f8d9-7c37-4a8c-8210-536eb7b4cd69" Version="3.10.0.0" />
+  <Content ExportType="Png" SortAlgorithm="MaxRects" PicturePadding="2" AllowRotation="True" AllowAnySize="False" AllowTrim="False" ctype="PlistInfoData">
+    <ImageFiles>
+      <FilePathData Path="res_main/ui_res/setting/ui_setting_03.png" />
+      <FilePathData Path="res_main/ui_res/setting/ui_setting_04.png" />
+      <FilePathData Path="res_main/ui_res/setting/ui_setting_05.png" />
+      <FilePathData Path="res_main/ui_res/setting/ui_setting_06.png" />
+      <FilePathData Path="res_main/ui_res/setting/ui_setting_07.png" />
+      <FilePathData Path="res_main/ui_res/setting/ui_setting_08.png" />
+      <FilePathData Path="res_main/ui_res/setting/ui_setting_09.png" />
+      <FilePathData Path="res_main/ui_res/setting/ui_setting_10.png" />
+      <FilePathData Path="res_main/ui_res/setting/ui_setting_11.png" />
+      <FilePathData Path="res_main/ui_res/setting/ui_setting_12.png" />
+    </ImageFiles>
+    <MaxSize Width="512" Height="512" />
+  </Content>
+</PlistInfoProjectFile>

@@ -1,0 +1,61 @@
+package Player;
+
+option java_package = "game.message";
+option java_outer_classname = "PlayerMessage";
+
+message RoomInfo{
+	optional string roomId  = 1;
+	optional int32 roomNum  = 3;
+	optional int32 roomType = 5;
+	optional int32 gameType = 7;
+}
+
+// 角色信息
+message PlayerInfo
+{
+	optional string userId                       = 1;			        // 用户ID
+	optional string roleId                       = 2;      	          	// 角色ID
+	optional int32  roleLevel                    = 3;                   // 等级
+	optional string roleName                     = 4;                   // 角色名
+	optional int32  exp                          = 6;                   // 当前经验
+	optional int32  vipRemainDay                 = 7;                   // vip等级
+	optional int32  energyBuyNum                 = 8;                 	// 当日体力购买次数
+	optional int32 	monthCardExpiryDate          = 10; 			    	// 月卡有效期(时间戳秒), 没买过则为0
+	optional RoomInfo roomInfo 			 		 = 13; 				    // 玩家所在的房间信息
+	optional int32 sex 						     = 14; 					// 性别:0 = 男 1 = 女
+	optional string headURL  				     = 15; 					// 头像url
+	optional int32 coin  						 = 16;					// 金币
+	optional int32 score 						 = 17;					// 积分
+	optional int32 gem   						 = 18;					// 宝石
+	optional string soleId 						 = 19;
+	optional string userName 				     = 20;
+}
+
+// =========================================================================
+//  客户端发送消息
+// =========================================================================
+
+
+// 临时GM命令消息
+message ReqGMCommand
+{
+	enum MsgID { eMsgID = 103202; };
+	optional string command = 1;      // GM命令
+}
+
+// 客户端请求时间戳
+message ReqTimestamp
+{
+	enum MsgID { eMsgID = 103201; };
+}
+
+// =========================================================================
+//  服务器发送消息
+// =========================================================================
+
+// 服务器返回请求时间戳
+message ResTimestamp
+{
+	enum MsgID { eMsgID = 103101; };
+	required string time = 1;
+}

@@ -1,0 +1,19 @@
+package BaseMessage;
+
+option java_package = "game.message";
+option java_outer_classname = "BaseMessage";
+
+//************************************//
+// proto 基础协议结构
+//************************************//
+
+// 最终发送数据协议(注:这里本应该是一个repeated结构,编译发送多个二进制消息, 后面需要修改)
+message Rpc{
+    required RpcData rpcData = 1;
+}
+
+// 具体的被序列化为二进制数据的消息协议结构
+message RpcData{
+    required int32 msgId = 1;
+    optional bytes serialized_msgData = 2;
+}

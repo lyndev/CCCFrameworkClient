@@ -1,0 +1,11 @@
+{
+    "packageUrl" : "http://106.14.36.155:1573/res/gamecardfixhot/game_daer/files/",
+    "remoteManifestUrl" : "http://106.14.36.155:1573/res/gamecardfixhot/game_daer/version/project.manifest",
+    "remoteVersionUrl" : "http://106.14.36.155:1573/res/gamecardfixhot/game_daer/version/version.manifest",
+    "version" : "1.0.0",
+    "engineVersion" : "Cocos2d-x 3.6",
+    "assets" : {
+    },
+    "searchPaths" : [
+    ]
+}

@@ -1,0 +1,67 @@
+package SignIn;
+
+option java_package = "game.message";
+option java_outer_classname = "SignInMessage";
+
+
+//补签情况
+message ExtraSignInfo
+{
+	required int32 day 				= 1; 	//签到第几天
+	required bool canExtraSigned 	= 2; 	//是否已经补签
+}
+
+
+//******************//
+//  客户端发送消息  //
+//******************//
+
+// 请求签到
+message ReqSignIn
+{
+	enum MsgID { eMsgID = 117201; };
+	required int32  num                               = 1;      // 当前签到次数
+}
+
+// 请求补领
+message ReqExtraGet
+{
+	enum MsgID { eMsgID = 117202; };
+	required int32  num                               = 1;      // 当前签到次数	
+}
+
+
+//**************************//
+//  服务器发送到客户端消息  //
+//**************************//
+
+// 初始化玩家签到信息
+message ResSignInInfo
+{
+	enum MsgID { eMsgID = 117101; };
+	required int32  num                               = 1;      // 当前签到次数
+	required bool   isSignIn                          = 2;      // 当天是否已经签到（false: 没有签到   true: 已经签到）
+	repeated ExtraSignInfo 	extraInfo 				  = 3; 		// 补签情况
+	required int32  month                             = 4;      // 当前月
+}
+
+// 返回签到结果
+message ResSignInResult
+{
+	enum MsgID { eMsgID = 117102; };
+	required int32  num                               = 1;      // 当前签到次数
+	required bool   isSignIn                          = 2;      // 当天是否已经签到（false: 没有签到   true: 已经签到）
+	required bool   isExtraSignIn 					  = 3; 	 	// 当天是已经补签(false:没有补签, true:已经补签或不能补签)
+	required int32  eCode 							  = 4; 		// 错误码
+	optional string reward                            = 5;      // 签到成功获得的奖励
+}
+
+// 返回补领结果
+message ResResExtraGet
+{
+	enum MsgID { eMsgID = 117103; };
+	required int32  num                               = 1;      // 当前签到次数
+	required bool   isExtraSignIn 					  = 2; 	 	// 当天是已经补签(false:没有补签, true:已经补签或不能补签)
+	required int32  eCode 							  = 3; 		// 错误码
+}
+

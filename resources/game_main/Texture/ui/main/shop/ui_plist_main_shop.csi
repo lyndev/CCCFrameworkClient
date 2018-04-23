@@ -1,0 +1,29 @@
+<PlistInfoProjectFile>
+  <PropertyGroup Name="ui_plist_main_shop" Type="Plist" ID="f85e2543-066c-409c-b777-f3f185252ac6" Version="3.10.0.0" />
+  <Content ExportType="Png" SortAlgorithm="MaxRects" PicturePadding="2" AllowRotation="True" AllowAnySize="False" AllowTrim="False" ctype="PlistInfoData">
+    <ImageFiles>
+      <FilePathData Path="res_main/ui_res/shop/ui_shop_01.png" />
+      <FilePathData Path="res_main/ui_res/shop/ui_shop_02.png" />
+      <FilePathData Path="res_main/ui_res/shop/ui_shop_03.png" />
+      <FilePathData Path="res_main/ui_res/shop/ui_shop_04.png" />
+      <FilePathData Path="res_main/ui_res/shop/ui_shop_07.png" />
+      <FilePathData Path="res_main/ui_res/shop/ui_shop_08.png" />
+      <FilePathData Path="res_main/ui_res/shop/ui_shop_09.png" />
+      <FilePathData Path="res_main/ui_res/shop/ui_shop_10.png" />
+      <FilePathData Path="res_main/ui_res/shop/ui_shop_11.png" />
+      <FilePathData Path="res_main/ui_res/shop/ui_shop_12.png" />
+      <FilePathData Path="res_main/ui_res/shop/ui_shop_13.png" />
+      <FilePathData Path="res_main/ui_res/shop/ui_shop_14.png" />
+      <FilePathData Path="res_main/ui_res/shop/ui_shop_15.png" />
+      <FilePathData Path="res_main/ui_res/shop/ui_shop_16.png" />
+      <FilePathData Path="res_main/ui_res/shop/ui_shop_17.png" />
+      <FilePathData Path="res_main/ui_res/shop/ui_shop_18.png" />
+      <FilePathData Path="res_main/ui_res/shop/ui_shop_19.png" />
+      <FilePathData Path="res_main/ui_res/shop/ui_shop_20.png" />
+      <FilePathData Path="res_main/ui_res/shop/ui_shop_21.png" />
+      <FilePathData Path="res_main/ui_res/shop/ui_shop_22.png" />
+      <FilePathData Path="res_main/ui_res/shop/ui_shop_05.png" />
+    </ImageFiles>
+    <MaxSize Width="512" Height="1024" />
+  </Content>
+</PlistInfoProjectFile>
