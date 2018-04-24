@@ -1,7 +1,7 @@
 /*******************************************************************************
-Copyright (C), 2015-2019, RaTo Tech. Co., Ltd.
+Copyright (C), 2015-2019, XXX Tech. Co., Ltd.
 文 件 名: UIZJHFight.js
-作    者: 刘伏波
+作    者: lyn
 创建日期: 2018-03-28
 完成日期: 
 功能描述: 
@@ -16,6 +16,7 @@ var UIBase = require("UIBase")
 var FULL_PEOPLE_COUNT  = 7
 var THINKING_TIME = 61     
 var CLEAR_DESK = 3     
+var TOTAL_PLAY_TIMES = 20
 var CARD_DEFAULT_POINT = []
 CARD_DEFAULT_POINT[0]  = cc.p(-30, 0)
 CARD_DEFAULT_POINT[1]  = cc.p(0, 0)
@@ -52,6 +53,10 @@ cc.Class({
         btnCancel:cc.Node,
 
         btnExit:cc.Node,
+
+        txtCellScore:cc.Label,
+        txtTotalScore:cc.Label,
+        txtPlayTimes:cc.Label,
 
     }, 
 
@@ -254,6 +259,11 @@ cc.Class({
             case cc.Client.GameType.FightActionType.A_ADD_SCORE:
                 break
             case cc.Client.GameType.FightActionType.A_FOLLOW_SCORE:
+                if(!msg_data.zjh_addScore){
+                    cc.log("msg_data.zjh_addScore is null")
+                }
+                this.updateDeskScore(msg_data.zjh_addScore)
+                cc.log("玩家继续跟注或加注index:%d, score:%d", _location, msg_data.zjh_addScore)
                 this.addOneChips(_location, 100)
                 break
             case cc.Client.GameType.FightActionType.A_WAIT_COMPARE:
@@ -319,6 +329,14 @@ cc.Class({
                     return
                 }
                 this.followChipForeverHandler()
+                
+                var _msg = cc.Client.MessageUtility.getMsgStruct(cc.GameMsg.MSGID.CS_ROOM_REQACTION)
+                var _action = {}
+                _action.actionType = cc.Client.GameType.FightActionType.A_FOLLOW_SCORE_FOREVER
+                _action.playerId = cc.Client.PlayerManager.getRoleId()
+                _action.zjh_followForever = this.bFollowForever
+                _msg.actions = _action
+                cc.Client.GameWebsocket.sendToServer(cc.GameMsg.MSGID.CS_ROOM_REQACTION, _msg)
                 break
             case "btn_show_list":
                 this.btnListShowHandler()
@@ -396,6 +414,16 @@ cc.Class({
 
     getLocationByUIIndex:function(ui_index){
         return this.m_locationMapUIIndex[ui_index]
+    },
+
+    updateDeskScore:function(data){
+        if(data){
+            if(this.txtPlayTimes) this.txtPlayTimes.string = data.currentPlayTimes + "/" +TOTAL_PLAY_TIMES
+            var _totalScore = cc.Client.Utility.FormatMoney(data.currentTotalScore)
+            var _cellScore = cc.Client.Utility.FormatMoney(data.currentCellScore)
+            if(this.txtTotalScore) this.txtTotalScore.string = _totalScore
+            if(this.txtCellScore) this.txtCellScore.string = _cellScore
+        }
     },
 
     changeReadyShow:function(location, bReady){
@@ -562,6 +590,7 @@ cc.Class({
         var _randomX = this.randomChipPoint(-this.chipNode.width * 0.5, this.chipNode.width * 0.5)
         var _randomY = this.randomChipPoint(-this.chipNode.height * 0.5, this.chipNode.height * 0.5)
         var _chip_obj = this.instantiateChip(chip_value)
+        _chip_obj.scale = 0.8
         _chip_obj.active = false
         _chip_obj.parent = this.chipNode
         var _taget_point = cc.p(_randomX, _randomY)

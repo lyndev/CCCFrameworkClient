@@ -2,7 +2,7 @@
 set CurrentDir=%~dp0
 set ProtoDir=%CurrentDir%
 set CppOutDir=%CurrentDir%..\cpp
-set JavaOutDir=D:\github\common_java_server\message\src
+set JavaOutDir=D:\my-github\server3.0\message\src
 set PbDir=%CurrentDir%..\pb
 set DestPbDir=%CurrentDir%..\EncryptDestPb
 set NewDestPbDir=%CurrentDir%..\EncryptNewDestPbDir

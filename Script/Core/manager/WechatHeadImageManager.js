@@ -1,7 +1,7 @@
 /*******************************************************************************
-Copyright (C), 2018, RaTo Tech. Co., Ltd.
+Copyright (C), 2018, XXX Tech. Co., Ltd.
 文 件 名: WechatHeadImageManager.js
-作    者: 刘伏波
+作    者: lyn
 创建日期: 2018-03-27
 完成日期: 
 功能描述: 

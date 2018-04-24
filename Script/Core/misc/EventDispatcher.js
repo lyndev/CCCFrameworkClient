@@ -1,5 +1,5 @@
 /*******************************************************************************
-Copyright (C), 2016, RaTo Tech. Co., Ltd.
+Copyright (C), 2016, XXX Tech. Co., Ltd.
 文 件 名: EventDispatcher.js
 作    者: 何伟
 创建日期: 2017-4-13

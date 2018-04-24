@@ -64,6 +64,7 @@ var FightActionType = {
     A_WAIT_COMPARE  :  15,   // 等待比牌
     A_THINKING      :  16,   // 思考中
     A_FOLLOW_SCORE  :  17,   // 跟注
+    A_FOLLOW_SCORE_FOREVER  :  18,   // 跟注到底
     A_ONLINE        :  100,  // 上线
     A_OFFLINE       :  101,  // 下线
 }

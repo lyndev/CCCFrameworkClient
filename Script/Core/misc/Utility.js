@@ -1,7 +1,7 @@
 /*******************************************************************************
-Copyright (C), 2016, RaTo Tech. Co., Ltd.
+Copyright (C), 2016, XXX Tech. Co., Ltd.
 文 件 名: cc.Client.Utility.js
-作    者: 刘伏波
+作    者: lyn
 创建日期: 2016-10-26
 完成日期: 
 功能描述: 工具类
@@ -511,6 +511,50 @@ var getHexNumber = function(str){
     return Number('0x'+str.toString(16))
 }
 
+// 非四舍五入，保留指定位数的小数位
+var GetPreciseDecimal =function (nNum, n){
+    n = n || 0;
+    var nDecimal = Math.pow(10,n)
+    var nTemp = Math.floor(nNum * nDecimal)
+    var nRet = nTemp / nDecimal
+    return nRet;
+}
+
+//[[
+// 函数类型: pulibic
+// 函数功能: 转换为有逗号的金币数量（逗号是用的"."）
+// 参数[IN]: 无
+// 返 回 值: 无
+//]]
+var FormatMoney = function (num){
+    var _bXiaoyu0 = false
+    if(num < 0){
+        _bXiaoyu0 = true
+    }
+    
+    num = Math.abs(Number(num))
+
+    if(num >= 10000 && num < 100000000){
+        var _afterNum = num / 10000
+        _afterNum = GetPreciseDecimal(_afterNum, 2)
+        if(_bXiaoyu0){
+            _afterNum = "-" + _afterNum
+        }
+        return _afterNum + "万"
+    } else if (num >= 100000000){
+        var _afterNum = num / 100000000
+        _afterNum = GetPreciseDecimal(_afterNum, 2)
+        if(_bXiaoyu0 ){
+            _afterNum = "-" + _afterNum
+        }
+        return _afterNum + "亿"
+    }
+    if(_bXiaoyu0){
+        num = "-"+num
+    }
+    return num
+}
+
 module.exports = {
 	FormatTimeAsMMSS : FormatTimeAsMMSS,
 	FormatTimeAsYYYYMMDDMMSS: FormatTimeAsYYYYMMDDMMSS,
@@ -546,4 +590,5 @@ module.exports = {
     dumpObj:dumpObj,
     SendHttpRequest:SendHttpRequest,
     getHexNumber: getHexNumber,
+    FormatMoney:FormatMoney,
 }
