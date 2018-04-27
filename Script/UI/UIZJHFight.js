@@ -83,8 +83,6 @@ cc.Class({
     },
 
     init:function(msg){
-        this.clearDesk()
-
         var self = this
         this.m_locationMapUIIndex = []
         this.m_playerUIIndex = 0
@@ -93,11 +91,12 @@ cc.Class({
         this.m_thinkingLocation = -1
         this.grayActionBtns(false)
         this.m_jionPlayer = []
-
         for (var i = 0; i < FULL_PEOPLE_COUNT; i++) {
             this.m_locationMapUIIndex[i] = -1
-            this.m_jionPlayer[i] = false
+            this.m_jionPlayer.push(false)
         }
+
+        this.clearDesk()
 
         cc.Client.MessageManager.register(this, cc.GameMsg.MSGID.SC_ROOM_RESACTION, function(msg_id, msg_data){
             self.onActionMsgHandler(msg_data)
@@ -174,6 +173,10 @@ cc.Class({
         this.m_playerUIIndex = 0
         this.m_cardIndex = 0
         this.playSendCardAnimation()
+    },
+
+    onSelectPlayerHead:function(event, data){
+        cc.log("select player head", data)
     },
 
     onGameResultMsgHandler:function(msg_data){
@@ -304,7 +307,7 @@ cc.Class({
                 break
             case "btn_compare_card":
                 if(!this.isSelfThinking()){
-                    return
+                    //return
                 }
                 this.compareCardBtnClick()
                 break
