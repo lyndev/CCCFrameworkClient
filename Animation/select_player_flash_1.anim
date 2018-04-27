@@ -1,0 +1,43 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_name": "select_player_flash_1",
+  "_objFlags": 0,
+  "_rawFiles": null,
+  "_duration": 0.8333333333333334,
+  "sample": 60,
+  "speed": 1,
+  "wrapMode": 2,
+  "curveData": {
+    "props": {
+      "scaleY": [
+        {
+          "frame": 0,
+          "value": 1.03
+        },
+        {
+          "frame": 0.4166666666666667,
+          "value": 0.98
+        },
+        {
+          "frame": 0.8333333333333334,
+          "value": 1.03
+        }
+      ],
+      "scaleX": [
+        {
+          "frame": 0,
+          "value": 1.03
+        },
+        {
+          "frame": 0.4166666666666667,
+          "value": 0.98
+        },
+        {
+          "frame": 0.8333333333333334,
+          "value": 1.03
+        }
+      ]
+    }
+  },
+  "events": []
+}

@@ -92,9 +92,11 @@ cc.Class({
         this.m_chips = []
         this.m_thinkingLocation = -1
         this.grayActionBtns(false)
+        this.m_jionPlayer = []
 
         for (var i = 0; i < FULL_PEOPLE_COUNT; i++) {
             this.m_locationMapUIIndex[i] = -1
+            this.m_jionPlayer[i] = false
         }
 
         cc.Client.MessageManager.register(this, cc.GameMsg.MSGID.SC_ROOM_RESACTION, function(msg_id, msg_data){
@@ -154,6 +156,7 @@ cc.Class({
             this.changeReadyShow(i, false)
             this.showCardState(i,"reset")
             this.resetPlayerCard(i)
+            this.m_jionPlayer[i] = false
         }
         this.btnPlayerReadyHandler("unready")
         if(this.chipNode) this.chipNode.removeAllChildren()
@@ -163,6 +166,9 @@ cc.Class({
         this.btnPlayerReadyHandler("hideall")
         for (var i = 0; i < FULL_PEOPLE_COUNT; i++) {
             this.changeReadyShow(i, false)
+            if(this.haveSeatReady(i)){
+                this.m_jionPlayer[i] = true
+            }
         }       
 
         this.m_playerUIIndex = 0
@@ -300,7 +306,7 @@ cc.Class({
                 if(!this.isSelfThinking()){
                     return
                 }
-                this.compareCardHandler()
+                this.compareCardBtnClick()
                 break
             case "btn_follow_chip":
                 if(!this.isSelfThinking()){
@@ -365,6 +371,29 @@ cc.Class({
         }
     },
 
+    compareCardBtnClick:function(){
+        this.m_bCompareState = true
+        this.showJionPlaySelectAnim(true)
+    },
+
+    showJionPlaySelectAnim:function(bShow){
+        for (var i = 0; i < FULL_PEOPLE_COUNT; i++) {
+            var _player_head = this.getPlayerHead(i)
+            var _anim_select_player = null
+            if(_player_head){
+               _anim_select_player = cc.Client.UIHelper.FindNodeByName(_player_head, "anim_select_player")
+            }
+
+            if(_anim_select_player){
+                if(bShow && this.m_jionPlayer[i]){
+                    _anim_select_player.active = true
+                } else {
+                    _anim_select_player.active = false
+                }
+            }
+        }
+    },
+
     sendActionMsg:function(action_type){
         var _msg = cc.Client.MessageUtility.getMsgStruct(cc.GameMsg.MSGID.CS_ROOM_REQACTION)
         var _action = {}
@@ -388,6 +417,7 @@ cc.Class({
             this.m_locationMapUIIndex[_ui_index] = -1
             this.playerHead[_ui_index].active = false
             this.playerMount[_ui_index].active = false
+            this.m_jionPlayer[location] = false
         }      
     },
 
@@ -841,6 +871,16 @@ cc.Class({
         this.showCardState(location, "giveup")
     },
 
+    haveSeatReady : function(location){
+        var _roloe_id = gFightMgr.getPlayerRoleId(location)
+        // 有人入座
+        if(_roloe_id != ""){
+            // 入座并准备了
+            var _bReady = gFightMgr.isReady(location)
+            return _bReady
+        }
+    },
+
     playSendCardAnimation:function(){
 
         if(!this.sendCardNode){
@@ -849,15 +889,7 @@ cc.Class({
 
         this.sendCardNode.active = true
 
-        var haveSeatReady = function(location){
-            var _roloe_id = gFightMgr.getPlayerRoleId(location)
-            // 有人入座
-            if(_roloe_id != ""){
-                // 入座并准备了
-                var _bReady = gFightMgr.isReady(location)
-                return _bReady
-            }
-        }
+   
 
         var nextPlayerIndex = function(){
             if(self.m_playerUIIndex == 6 && self.m_cardIndex == 2){
@@ -905,7 +937,7 @@ cc.Class({
 
             var _callback = cc.callFunc(_nextCallback)
             var _location = this.getLocationByUIIndex(this.m_playerUIIndex)
-            if(_location != -1 && haveSeatReady(_location)){
+            if(_location != -1 && this.haveSeatReady(_location)){
                 var _moveTo = cc.moveTo(0.2, _pointMountBaseSendCardSendNode)
                 var _rotateTo = cc.rotateTo(0.2, 720)
                 var _spawnActions = cc.spawn(_moveTo, _rotateTo)
